@@ -1,2 +1,6 @@
 set tabsize 4
 set tabstospaces
+
+
+#Include .nanorc files
+include /usr/share/nano/c.nanorc

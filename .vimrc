@@ -1,9 +1,12 @@
+" Kjelles vim configurations
 " Set Values: {{{
 "Set values
 set tabstop    	=2
 set shiftwidth 	=2
 set showbreak 	=+++
 set foldmethod  =marker
+set cmdheight		=2
+set t_Co				=256
 
 "Toggles
 set foldenable	"Enables folding 
@@ -13,8 +16,22 @@ set hlsearch	  "Highlights all search results
 set showmatch	  "Highlights matching brackets
 set noexpandtab
 
-set t_Co=256
+
 colorscheme deus
+"}}}
+"Custom commands: {{{
+command! -nargs=1 ArduinoCompile :exe "!arduino-cli compile ~/Arduino/%< --verbose --fqbn arduino:avr:" . <args>
+command! -nargs=1 ArduinoUpload :exe "!arduino-cli upload ~/Arduino/%< -p /dev/ttyACM0 --verbose --fqbn arduino:avr:" . <args>
+
+"Will call the commands above:
+"compile for a specific arduino board in arduino:avr familty
+"and then upload it to /dev/ttyACM0
+function! Arduino(arg)
+	:silent :ArduinoCompile(a:arg)
+	:ArduinoUpload(a:arg)
+endfunction
+
+
 "}}}
 "Keybindings: {{{
 "Quit insert mode with ctrl + j
@@ -28,6 +45,16 @@ nnoremap <SPACE> za
 nnoremap <S-Tab> <<
 " for insert mode
 inoremap <S-Tab> <C-d>
+
+
+"Bindings for easier working with Tabs (workspaces)
+"Switching tabs
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+"Moving tabs
+nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
+
 "}}}
 " netrw configs: {{{
 " netrw can be used instead of nerdtree

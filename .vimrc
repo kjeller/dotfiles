@@ -7,6 +7,8 @@ set showbreak 	=+++
 set foldmethod  =marker
 set cmdheight		=2
 set t_Co				=256
+set mouse       =a
+set so          =100  "center cursor 100 lines"
 
 "Toggles
 set foldenable	"Enables folding 
@@ -14,8 +16,10 @@ set number 	    "Show line numbers
 set cindent	    "Auto-indent new lines
 set hlsearch	  "Highlights all search results
 set showmatch	  "Highlights matching brackets
-set noexpandtab
+set expandtab
 
+set relativenumber
+set nu rnu
 
 colorscheme deus
 "}}}
@@ -30,7 +34,6 @@ function! Arduino(arg)
 	:silent :ArduinoCompile(a:arg)
 	:ArduinoUpload(a:arg)
 endfunction
-
 
 "}}}
 "Keybindings: {{{
@@ -47,6 +50,12 @@ nnoremap <S-Tab> <<
 inoremap <S-Tab> <C-d>
 
 
+vmap <Tab> >gv
+vmap <S-Tab> <gv
+
+"Toggle nerdtree 
+nnoremap ,n :NERDTreeToggle<CR>
+
 "Bindings for easier working with Tabs (workspaces)
 "Switching tabs
 nnoremap <C-Left> :tabprevious<CR>
@@ -55,6 +64,13 @@ nnoremap <C-Right> :tabnext<CR>
 nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 
+"Renaming variables easy with 'gr'
+"from: https://stackoverflow.com/questions/597687/changing-variable-names-in-vim
+" For local replace
+nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
+
+" For global replace
+nnoremap gR gD:%s/<C-R>///gc<left><left><left>
 "}}}
 " netrw configs: {{{
 " netrw can be used instead of nerdtree
@@ -66,7 +82,6 @@ let g:netrw_winsize	  = 25
 "}}}
 "Plugins: {{{
 call plug#begin('~/.vim/plugins')
-
-
+Plug 'preservim/nerdtree'
 call plug#end()
 "}}}

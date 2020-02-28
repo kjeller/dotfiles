@@ -23,6 +23,13 @@ set termguicolors
 set relativenumber
 set nu rnu
 
+
+"Auto install colorscheme if not found
+if empty(glob('~/.vim/colors/edge.vim'))
+  silent !curl -fLo ~/.vim/colors/edge.vim --create-dirs
+    \ https://raw.githubusercontent.com/sainnhe/edge/master/colors/edge.vim 
+endif
+
 let g:edge_style = 'neon'
 let g:edge_disable_italic_comment = 1
 

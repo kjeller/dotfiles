@@ -9,6 +9,7 @@ set cmdheight		=2
 set t_Co				=256
 set mouse       =a
 set so          =100  "center cursor 100 lines"
+set background  =dark
 
 "Toggles
 set foldenable	"Enables folding 
@@ -17,11 +18,15 @@ set cindent	    "Auto-indent new lines
 set hlsearch	  "Highlights all search results
 set showmatch	  "Highlights matching brackets
 set expandtab
+set termguicolors
 
 set relativenumber
 set nu rnu
 
-colorscheme deus
+let g:edge_style = 'neon'
+let g:edge_disable_italic_comment = 1
+
+colorscheme edge
 "}}}
 "Custom commands: {{{
 command! -nargs=1 ArduinoCompile :exe "!arduino-cli compile ~/Arduino/%< --verbose --fqbn arduino:avr:" . <args>
@@ -81,6 +86,14 @@ let g:netrw_altv	  = 1
 let g:netrw_winsize	  = 25
 "}}}
 "Plugins: {{{
+
+"Automatically install plug if not detected
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugins')
 Plug 'preservim/nerdtree'
 call plug#end()

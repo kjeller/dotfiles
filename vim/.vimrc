@@ -9,9 +9,9 @@ set showmatch
 """"""""""""""""""""""""""
 " Value options 
 """"""""""""""""""""""""""
-set so					=100 "Center cursor 100 lines
-set tabstop			=2
-set shiftwidth	=2
+set so          =100 "Center cursor 100 lines
+set tabstop     =2
+set shiftwidth  =2
 
 """"""""""""""""""""""""""
 " Key mappings

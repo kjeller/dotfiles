@@ -1,0 +1,19 @@
+# /home/kjell/.config/tmuxinator/home_splits.yml
+
+name: home_splits
+root: ~/
+
+windows:
+  - ha_split:
+      layout: tiled
+      panes:
+        - ssh pi@homeassistant
+        - #empty
+        - ssh pi@homeassistant
+  - remote:
+      layout: tiled 
+      panes:
+        - ssh pi@homeassistant
+        - ssh root@router
+        - ssh root@roborock
+        - ssh root@webostv

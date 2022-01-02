@@ -1,0 +1,26 @@
+# /home/kjell/.config/tmuxinator/home_setup.yml
+
+name: home_splits
+root: ~/
+
+windows:
+  - homeassistant:
+      layout: even-horizontal
+      panes:
+        - #empty
+        - ssh pi@homeassistant
+  - router:
+      layout: even-horizontal
+      panes:
+        - #empty
+        - ssh root@router 
+  - roborock:
+      layout: even-horizontal
+      panes:
+        - #empty
+        - ssh root@roborock 
+  - webostv:
+      layout: even-horizontal
+      panes:
+        - #empty
+        - ssh root@webostv

@@ -1,0 +1,6 @@
+[submodule "tmux/plugins/tpm"]
+	path = tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm.git
+[submodule "tmux/plugins/tmux-sidebar-plus"]
+	path = tmux/plugins/tmux-sidebar-plus
+	url = https://github.com/addisonlynch/tmux-sidebar-plus.git

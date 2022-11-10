@@ -4,3 +4,6 @@
 [submodule "tmux/plugins/tmux-sidebar-plus"]
 	path = tmux/plugins/tmux-sidebar-plus
 	url = https://github.com/addisonlynch/tmux-sidebar-plus.git
+[submodule "tmux/plugins/tmux-ssh-split"]
+	path = tmux/plugins/tmux-ssh-split
+	url = https://github.com/pschmitt/tmux-ssh-split.git

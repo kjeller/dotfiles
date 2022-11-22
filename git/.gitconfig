@@ -1,11 +1,13 @@
 [user]
-	email = kallestralman@gmail.com
-	name = kjeller
+  email = kallestralman@gmail.com
+  name = kjeller
 [alias]
-	co = checkout
-	br = branch
-	ci = commit
-	st = status
-	tree = log --graph --date=short --decorate --all --format=format:'%C(bold green)%h%C(reset):%C(bold cyan)[%ad]%C(reset) - %C(white)%s%C(auto)%d%C(reset) - %C(dim white)[%aN]%C(reset)' 
+  co = checkout
+  br = branch
+  ci = commit
+  st = status
+  sw = switch
+  cl = clean -ffxd
+  tree = log --graph --date=short --decorate --all --format=format:'%C(bold green)%h%C(reset):%C(bold cyan)[%ad]%C(reset) - %C(white)%s%C(auto)%d%C(reset) - %C(dim white)[%aN]%C(reset)' 
 [core]
-	editor = vim
+  editor = vim

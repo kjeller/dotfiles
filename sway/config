@@ -23,7 +23,8 @@ include /etc/sway/outputs/*
 include /etc/sway/modes/*
 
 # only enable this if every app you use is compatible with wayland
-# xwayland disable
+# - android emulator currently only support X11
+xwayland enable
 
 # include additional configs e.g. to autostart applications
 include /etc/sway/config.d/*

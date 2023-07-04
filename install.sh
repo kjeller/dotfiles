@@ -12,6 +12,18 @@ cp -frs $PWD/tmux/plugins ~/.tmux/
 cp -frs $PWD/tmux/.tmux.conf ~/.tmux.conf
 cp -frs $PWD/tmuxinator/ $CONFIG
 
+# Determine what desktop/wm configs to use based on current desktop in use
+case $XDG_CURRENT_DESKTOP in
+  "sway")
+    echo "Using sway window manager configs"
+    cp -frs $PWD/sway/config ~/.config/sway/config
+    cp -frs $PWD/sway/config.d/*.conf ~/.config/sway/config.d/*.conf
+    ;;
+  *)
+    echo "No configuration files for $XDG_CURRENT_DESKTOP.. skipping"
+    ;;
+esac
+
 # Determine what terminal configs to install based on terminal capabilities
 # Not really ideal since different terminals may use same capability.
 case $TERM in
@@ -55,7 +67,6 @@ if [ -d "$PWD/rclone" ]; then
   
   mkdir -p ~/.config/rclone/
   cp -frs $PWD/rclone/conf/* ~/.config/rclone/
-  
 
   for i in $PWD/rclone/conf/*.env; do
     if [ -f "$i" ]; then

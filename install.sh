@@ -17,7 +17,7 @@ case $XDG_CURRENT_DESKTOP in
   "sway")
     echo "Using sway window manager configs"
     cp -frs $PWD/sway/config ~/.config/sway/config
-    cp -frs $PWD/sway/config.d/*.conf ~/.config/sway/config.d/*.conf
+    cp -frs $PWD/sway/config.d/*.conf ~/.config/sway/config.d/
     ;;
   *)
     echo "No configuration files for $XDG_CURRENT_DESKTOP.. skipping"

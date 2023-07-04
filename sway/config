@@ -30,3 +30,9 @@ include /etc/sway/config.d/*
 
 # user config
 include $HOME/.config/sway/config.d/*.conf
+
+# set screen mode
+# since nvidia-settings does not currently support wayland
+# I can't set my refresh rate to 144Hz without flickering
+# pls nvidia: https://github.com/NVIDIA/nvidia-settings/issues/69
+output "BNQ ZOWIE XL LCD N8H06657SL0" mode 1920x1080@60Hz 

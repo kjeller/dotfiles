@@ -39,9 +39,9 @@ esac
 # Determine what terminal configs to install based on terminal capabilities
 # Not really ideal since different terminals may use same capability.
 case $TERM in
-  "foot-extra")
+  "foot"*)
     echo "Using foot terminal config"
-    cp -frs $PWD/foot/ $CONFIG/foot/
+    cp -frs $PWD/foot/* $CONFIG/foot/
     ;;
   "linux" | "screen"*)
     echo "Warning: Running in virtual terminal. Cannot determine what config to use.. skipping"

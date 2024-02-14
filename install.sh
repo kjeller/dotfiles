@@ -16,6 +16,9 @@ PWD=`pwd`
 CONFIG=~/.config
 SYSTEMD_USER_SERVICE_PATH=/etc/systemd/user
 
+# Create config folder if not already created
+mkdir -p $CONFIG
+
 # Create symlinks for all config files
 cp -frs $PWD/vim/.vimrc ~/.vimrc
 cp -frs $PWD/git/.gitconfig ~/.gitconfig
@@ -26,13 +29,14 @@ cp -frs $PWD/tmuxinator/ $CONFIG
 
 # Determine what desktop/wm configs to use based on current desktop in use
 case $XDG_CURRENT_DESKTOP in
-  "sway")
-    echo "Using sway window manager configs"
-    cp -frs $PWD/sway/config ~/.config/sway/config
-    cp -frs $PWD/sway/config.d/*.conf ~/.config/sway/config.d/
-    ;;
-  *)
-    echo "No configuration files for $XDG_CURRENT_DESKTOP.. skipping"
+    "sway")
+      echo "Using sway window manager configs"
+      mkdir -p ~/.config/sway/config.d/
+      cp -frs $PWD/sway/config ~/.config/sway/config
+      cp -frs $PWD/sway/config.d/*.conf ~/.config/sway/config.d/
+      ;;
+    *)
+      echo "No configuration files for $XDG_CURRENT_DESKTOP.. skipping"
     ;;
 esac
 
@@ -41,6 +45,7 @@ esac
 case $TERM in
   "foot"*)
     echo "Using foot terminal config"
+    mkdir -p $CONFIG/foot/
     cp -frs $PWD/foot/* $CONFIG/foot/
     ;;
   "linux" | "screen"*)

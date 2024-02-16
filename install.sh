@@ -15,6 +15,7 @@ check_if_sudo () {
 PWD=`pwd`
 CONFIG=~/.config
 SYSTEMD_USER_SERVICE_PATH=/etc/systemd/user
+USR=$USER
 
 # Create config folder if not already created
 mkdir -p $CONFIG
@@ -93,7 +94,7 @@ if [ -d "$PWD/rclone" ]; then
       
       echo "Creating mount path $MOUNT_DIR for service $SERVICE_NAME"
       sudo mkdir -p "$MOUNT_DIR"
-      sudo chown $USER $MOUNT_DIR
+      sudo chown $USR $MOUNT_DIR
       echo "Start templated service for $SERVICE_NAME remote"
       systemctl --user enable rclone@$SERVICE_NAME
       systemctl --user start rclone@$SERVICE_NAME
